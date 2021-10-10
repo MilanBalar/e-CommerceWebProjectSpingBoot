@@ -11,6 +11,7 @@ import java.util.Random;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.ObjectUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -109,6 +110,9 @@ public class AdminController {
     		Model model) throws IOException {
 
     	TblProducts tbProducts=new TblProducts();
+    	if(productDTO.getProductId()!=0 && !ObjectUtils.isEmpty(productDTO.getProductId())) {
+    		tbProducts.setProductId(productDTO.getProductId());
+        }
     	tbProducts.setName(productDTO.getName());
     	tbProducts.setTblCategories(categoryService.getCategoryById(productDTO.getTblCategoriesId()).get());
     	tbProducts.setPrice(productDTO.getPrice());
