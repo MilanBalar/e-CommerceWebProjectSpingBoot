@@ -31,5 +31,9 @@ public class ProductsService {
         public Optional<TblProducts> getProduct(long id) {
         	 return productsRepository.findById(id);
         }
+        public List<TblProducts> getAllProductbyId(int categoryId) {
+        	return productsRepository.getAllProductByCaterogyId(categoryId);
+        }
+
 
 }

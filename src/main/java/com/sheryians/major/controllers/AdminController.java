@@ -33,7 +33,7 @@ public class AdminController {
 	@Autowired
 	private ProductsService productsService;
 
-	private final static String uploadDir=System.getProperty("user.dir")+"/src/main/resources/static/productImages";
+	public final static String uploadDir=System.getProperty("user.dir")+"/src/main/resources/static/productImages";
 	//private final static String uploadDir="D:\\product-pic";
 
 	@GetMapping("/admin")
