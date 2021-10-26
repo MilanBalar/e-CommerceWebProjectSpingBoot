@@ -23,12 +23,15 @@ public class CustomUserDetailsService implements UserDetailsService {
 
 		Optional<TblUser> user = userRepository.findTblUserByEmail(username);
 		user.orElseThrow(()->new UsernameNotFoundException("User not exist !!"));
-		if(user==null)
-		 {
-			 throw new UsernameNotFoundException("Could't found the user !!");
-		 }
-		 CustomeUserDetail customUserDetails=new CustomeUserDetail(user.get());
-		 return customUserDetails;
+		/*
+		 * if(user==null) { throw new
+		 * UsernameNotFoundException("Could't found the user !!"); } CustomeUserDetail
+		 * customUserDetails=new CustomeUserDetail(user.get()); return
+		 * customUserDetails;
+		 */
+
+		return user.map(CustomeUserDetail::new).get();
+
 	}
 
 }

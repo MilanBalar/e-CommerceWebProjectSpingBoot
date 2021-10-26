@@ -45,6 +45,21 @@ public class TblUser {
 		)
 	private List<TblRoles> tblRoles;
 
+
+
+	public TblUser(TblUser user) {
+		super();
+		this.id = user.getUserId();
+		this.fisrtName = user.getFisrtName();
+		this.lastName = user.getLastName();
+		this.email = user.getEmail();
+		this.password = user.getPassword();
+		this.tblRoles = user.getTblRoles();
+	}
+	public TblUser() {
+		super();
+	}
+
 	public long getUserId() {
 		return id;
 	}

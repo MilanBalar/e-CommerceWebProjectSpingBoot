@@ -10,13 +10,12 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 public class CustomeUserDetail extends TblUser implements UserDetails {
 
-	private TblUser user;
-
-	//constructor
+	  //constructor
 		public CustomeUserDetail(TblUser user) {
-			super();
-			this.user = user;
+			super(user);
+
 		}
+
 
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
