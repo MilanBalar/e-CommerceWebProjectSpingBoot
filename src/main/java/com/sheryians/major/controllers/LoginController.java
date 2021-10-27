@@ -17,6 +17,7 @@ import com.sheryians.major.entity.TblRoles;
 import com.sheryians.major.entity.TblUser;
 import com.sheryians.major.repository.RoleRepository;
 import com.sheryians.major.repository.UserRepository;
+import com.sheryians.major.service.GlobalData;
 
 @Controller
 public class LoginController {
@@ -49,6 +50,7 @@ public class LoginController {
 	}
 	@GetMapping("/login")
 	public String login() {
+		GlobalData.cart.clear();
 		return "login";
 	}
 

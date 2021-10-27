@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
 import com.sheryians.major.service.CategoryService;
+import com.sheryians.major.service.GlobalData;
 import com.sheryians.major.service.ProductsService;
 
 @Controller
@@ -18,7 +19,8 @@ public class HomeController {
 	private ProductsService productsService;
 
 	@GetMapping({"home","/"})
-	public String home() {
+	public String home(Model model) {
+		model.addAttribute("cartCount", GlobalData.cart.size());
 		return "index";
 	}
 
@@ -26,6 +28,7 @@ public class HomeController {
 	public String shop(Model model) {
 		model.addAttribute("products", productsService.getAllProducts());
 		model.addAttribute("categories", categoryService.getAllCategory());
+		model.addAttribute("cartCount", GlobalData.cart.size());
 		return "shop";
 	}
 
@@ -33,11 +36,13 @@ public class HomeController {
 	public String shopByCategory(Model model, @PathVariable("id") int id) {
         model.addAttribute("products", productsService.getAllProductbyId(id));
 		model.addAttribute("categories", categoryService.getAllCategory());
+		model.addAttribute("cartCount", GlobalData.cart.size());
 		return "shop";
 	}
 	@GetMapping("shop/viewproduct/{id}")
 	public String shopByCategory(Model model, @PathVariable("id") long id) {
 		model.addAttribute("product",productsService.getProductById(id).get());
+		model.addAttribute("cartCount", GlobalData.cart.size());
         return "viewproduct";
 	}
 
