@@ -41,7 +41,7 @@ public class GoogleOAuth2SuccessHandler implements AuthenticationSuccessHandler 
 		}else {
 			TblUser tblUser=new TblUser();
 			tblUser.setFisrtName(token.getPrincipal().getAttributes().get("given_name").toString());
-			tblUser.setFisrtName(token.getPrincipal().getAttributes().get("family_name").toString());
+			tblUser.setLastName(token.getPrincipal().getAttributes().get("family_name").toString());
 			tblUser.setEmail(email);
 			List<TblRoles> tblRoles=new ArrayList<TblRoles>();
 			tblRoles.add(roleRepository.findById(2).get());//for user role id is 2
